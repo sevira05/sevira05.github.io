@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Antrian Online System</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1e1b4b, #0f172a);
+      color: #e5e7eb;
+      font-family: system-ui;
+    }
+
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="px-6 py-4 flex justify-between items-center glass sticky top-0">
+  <h1 class="font-semibold">Antrian System</h1>
+
+  <a href="/" class="text-sm hover:text-indigo-400">
+    ← Back to Portfolio
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="text-center py-24 px-6">
+
+  <h1 class="text-4xl md:text-5xl font-bold">
+    Mobile Antrian Online System
+  </h1>
+
+  <p class="mt-4 max-w-xl mx-auto opacity-70">
+    Sistem antrian digital berbasis Android dan Web Admin Dashboard
+    untuk meningkatkan efisiensi pelayanan.
+  </p>
+
+  <a href="/app-release.apk"
+     class="mt-8 inline-block px-6 py-3 bg-indigo-500 rounded-xl hover:bg-indigo-600">
+     Download APK
+  </a>
+
+</section>
+
+<!-- DESKRIPSI -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+
+  <div class="glass p-8">
+
+    <h2 class="text-2xl font-bold mb-4">Tentang Aplikasi</h2>
+
+    <p class="opacity-80">
+      Aplikasi ini memungkinkan pengguna mengambil nomor antrian secara online melalui mobile app,
+      dan memantau status antrian secara real-time.
+    </p>
+
+    <p class="opacity-80 mt-4">
+      Admin dapat mengelola seluruh proses melalui dashboard web yang terintegrasi dengan backend API.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FITUR -->
+<section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-6">
+
+  <div class="glass p-6">
+    <h3 class="font-semibold mb-3">📱 Mobile App</h3>
+    <ul class="space-y-2 opacity-80 text-sm">
+      <li>Login / Register</li>
+      <li>Ambil Antrian</li>
+      <li>Monitor Status</li>
+      <li>Notifikasi</li>
+    </ul>
+  </div>
+
+  <div class="glass p-6">
+    <h3 class="font-semibold mb-3">💻 Web Admin</h3>
+    <ul class="space-y-2 opacity-80 text-sm">
+      <li>Dashboard</li>
+      <li>Kelola Antrian</li>
+      <li>Kelola User</li>
+      <li>Laporan</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+
+  <h2 class="text-2xl font-bold text-center mb-10">
+    Screenshots
+  </h2>
+
+  <!-- MOBILE -->
+  <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+    <img src="screenshots/mobile-login.png" class="rounded-xl aspect-[9/19] object-cover">
+    <img src="screenshots/mobile-dashboard.png" class="rounded-xl aspect-[9/19] object-cover">
+    <img src="screenshots/mobile-monitor.png" class="rounded-xl aspect-[9/19] object-cover">
+
+  </div>
+
+  <!-- ADMIN -->
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <img src="screenshots/admin-dashboard.png" class="rounded-xl max-h-72 object-contain">
+    <img src="screenshots/admin-monitor.png" class="rounded-xl max-h-72 object-contain">
+    <img src="screenshots/admin-user.png" class="rounded-xl max-h-72 object-contain">
+
+  </div>
+
+</section>
+
+<!-- TECH STACK -->
+<section class="text-center py-16">
+
+  <h2 class="text-2xl font-bold mb-6">Tech Stack</h2>
+
+  <div class="flex flex-wrap justify-center gap-3 opacity-80 text-sm">
+    <span class="glass px-3 py-1">Kotlin</span>
+    <span class="glass px-3 py-1">React</span>
+    <span class="glass px-3 py-1">Tailwind</span>
+    <span class="glass px-3 py-1">REST API</span>
+    <span class="glass px-3 py-1">MySQL</span>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-6 text-sm opacity-50">
+  © 2026 Mobile Antrian System
+</footer>
+
+</body>
+</html>

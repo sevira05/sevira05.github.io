@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sevira Azalia Putri | Portfolio</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1e1b4b, #0f172a);
+      color: #e5e7eb;
+      font-family: system-ui;
+    }
+
+    .glass {
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed w-full top-0 z-50 px-8 py-4 flex justify-between items-center glass">
+  <h1 class="font-semibold text-lg tracking-wide">Sevira.dev</h1>
+
+  <div class="space-x-8 text-sm hidden md:block">
+    <a href="#about" class="hover:text-indigo-400">About</a>
+    <a href="#projects" class="hover:text-indigo-400">Projects</a>
+    <a href="#skills" class="hover:text-indigo-400">Skills</a>
+    <a href="#contact" class="hover:text-indigo-400">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="text-center pt-44 pb-32 px-6">
+
+  <lottie-player
+    src="https://assets9.lottiefiles.com/packages/lf20_3vbOcw.json"
+    style="width:130px;margin:auto"
+    loop autoplay>
+  </lottie-player>
+
+  <h1 class="mt-8 text-5xl md:text-6xl font-bold leading-tight" data-aos="fade-up">
+    Sevira Azalia Putri
+  </h1>
+
+  <p class="mt-4 text-lg opacity-70 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+    Android Developer & Fullstack Enthusiast yang fokus membangun
+    aplikasi modern, cepat, dan user-friendly.
+  </p>
+
+  <div class="mt-8 flex justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+    <a href="#projects"
+       class="px-6 py-3 bg-indigo-500 rounded-xl hover:bg-indigo-600 transition shadow-lg">
+       Lihat Project
+    </a>
+
+    <a href="mailto:seviraazalia@gmail.com"
+       class="px-6 py-3 border border-white/20 rounded-xl hover:bg-white/10 transition">
+       Contact
+    </a>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="max-w-4xl mx-auto px-6 py-24">
+
+  <div class="glass p-10 text-center" data-aos="fade-up">
+
+    <h2 class="text-3xl font-bold mb-6">Tentang Saya</h2>
+
+    <p class="opacity-80 leading-relaxed">
+      Saya adalah developer yang memiliki passion dalam membangun aplikasi mobile
+      dan web modern dengan fokus pada performa dan pengalaman pengguna.
+    </p>
+
+    <p class="opacity-80 mt-4">
+      Saya telah mengembangkan sistem antrian online berbasis Android dan Web Dashboard
+      yang terintegrasi dengan REST API untuk meningkatkan efisiensi pelayanan.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-6xl mx-auto px-6 py-24">
+
+  <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">
+    My Projects
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <!-- PROJECT 1 -->
+    <div class="glass p-6 hover:scale-[1.02] transition" data-aos="fade-up">
+
+      <img src="screenshots/admin-dashboard.png"
+           class="rounded-xl mb-5 shadow-md">
+
+      <h3 class="text-xl font-semibold mb-2">
+        Mobile Antrian Online System
+      </h3>
+
+      <p class="opacity-70 text-sm mb-4">
+        Sistem antrian digital real-time berbasis Android (Kotlin) dan Web Admin Dashboard
+        untuk meningkatkan efisiensi layanan publik.
+      </p>
+
+      <div class="flex gap-3">
+        <a href="/antrian-project/"
+           class="px-4 py-2 bg-indigo-500 rounded-lg text-sm hover:bg-indigo-600">
+           Live Demo
+        </a>
+
+        <a href="#"
+           class="px-4 py-2 border border-white/20 rounded-lg text-sm">
+           Source
+        </a>
+      </div>
+
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="glass p-6 flex items-center justify-center opacity-50" data-aos="fade-up">
+      Next Project Coming Soon 🚀
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="text-center py-24">
+
+  <h2 class="text-3xl font-bold mb-12" data-aos="fade-up">Tech Stack</h2>
+
+  <div class="flex flex-wrap justify-center gap-4">
+
+    <span class="glass px-4 py-2">Kotlin</span>
+    <span class="glass px-4 py-2">Android</span>
+    <span class="glass px-4 py-2">React</span>
+    <span class="glass px-4 py-2">Tailwind</span>
+    <span class="glass px-4 py-2">REST API</span>
+    <span class="glass px-4 py-2">MySQL</span>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="text-center py-24">
+
+  <h2 class="text-3xl font-bold mb-6" data-aos="fade-up">Contact Me</h2>
+
+  <p class="opacity-70 mb-6">seviraazalia@gmail.com</p>
+
+  <a href="mailto:seviraazalia@gmail.com"
+     class="px-8 py-3 bg-indigo-500 rounded-xl hover:bg-indigo-600 transition">
+     Send Email
+  </a>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center py-6 text-sm opacity-50 border-t border-white/10">
+  © 2026 Sevira Azalia Putri
+</footer>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+</script>
+
+</body>
+</html>
