@@ -1,593 +1,148 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Antrian Online System | Sevira Azalia Putri</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Antrian Online System</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0e0e0f;
-      --bg2: #161618;
-      --bg3: #1e1e21;
-      --accent: #c8f064;
-      --accent2: #a3d43e;
-      --text: #f0ede8;
-      --muted: #8a8780;
-      --border: rgba(255,255,255,0.08);
-      --card-bg: #18181b;
-    }
-
     body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
+      background: radial-gradient(circle at top, #1e1b4b, #0f172a);
+      color: #e5e7eb;
+      font-family: system-ui;
     }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(14,14,15,0.85);
+    .glass {
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-    .back-link {
-      display: flex; align-items: center; gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .back-link:hover { color: var(--accent); }
-    .nav-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1rem;
-      color: var(--muted);
-    }
-
-    /* HERO */
-    .hero {
-      padding: 9rem 3rem 5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .hero-label {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(200,240,100,0.08);
-      border: 1px solid rgba(200,240,100,0.2);
-      border-radius: 100px;
-      padding: 0.35rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      line-height: 1.1;
-      color: var(--text);
-      margin-bottom: 1.2rem;
-    }
-    .hero h1 em { font-style: italic; color: var(--accent); }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-    .cta-row {
-      display: flex; flex-wrap: wrap; gap: 1rem;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--accent);
-      color: #0e0e0f;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.85rem 2rem;
-      border-radius: 100px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
-
-    .version-badge {
-      display: flex; align-items: center; gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-    .badge {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    /* MOCKUP */
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    .phone-frame {
-      width: 200px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 32px;
-      padding: 0.75rem;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-      z-index: 2;
-      position: relative;
-    }
-    .phone-screen {
-      background: #111;
-      border-radius: 24px;
-      overflow: hidden;
-      aspect-ratio: 9/19;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem;
-    }
-    .phone-icon { font-size: 2rem; }
-    .phone-text { font-size: 0.7rem; color: var(--accent); font-weight: 600; text-align: center; }
-    .phone-sub { font-size: 0.6rem; color: var(--muted); text-align: center; }
-
-    .browser-frame {
-      width: 280px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-      position: absolute;
-      right: -40px;
-      top: 30px;
-      z-index: 1;
-    }
-    .browser-bar {
-      background: var(--bg2);
-      padding: 0.5rem 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .browser-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .browser-url {
-      flex: 1;
-      background: var(--bg3);
-      border-radius: 4px;
-      padding: 0.2rem 0.5rem;
-      font-size: 0.6rem;
-      color: var(--muted);
-      margin-left: 0.5rem;
-    }
-    .browser-body {
-      padding: 1rem;
-      background: #111;
-      min-height: 120px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .b-row { height: 8px; background: var(--bg3); border-radius: 4px; }
-    .b-row.accent { background: rgba(200,240,100,0.2); width: 60%; }
-
-    /* DIVIDER */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* SECTION */
-    .section {
-      padding: 5rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    /* FEATURES */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.25rem;
-      margin-top: 0.5rem;
-    }
-    .feature-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-    }
-    .feature-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .feature-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-    .feature-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-    .feature-list li {
-      font-size: 0.85rem;
-      color: var(--muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-    }
-    .feature-list li::before {
-      content: '—';
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* TECH STACK */
-    .tech-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 0.5rem;
-    }
-    .tech-pill {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 0.5rem 1.2rem;
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-    .tech-pill.highlight {
-      background: rgba(200,240,100,0.1);
-      border-color: rgba(200,240,100,0.25);
-      color: var(--accent);
-    }
-
-    /* SCREENSHOTS */
-    .screenshots-section {
-      padding: 5rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .screenshots-desc {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-    .screenshot-group { margin-bottom: 3rem; }
-    .screenshot-group-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .screenshot-group-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-    .screenshot-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .screenshot-item {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 9/16;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .screenshot-item.web {
-      aspect-ratio: 16/10;
-    }
-    .screenshot-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* DOWNLOAD CTA */
-    .download-cta {
-      padding: 5rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .download-box {
-      background: var(--card-bg);
-      border: 1px solid rgba(200,240,100,0.2);
-      border-radius: 24px;
-      padding: 3.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .download-info h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-    .download-info p {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .download-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .hero { padding: 7rem 1.5rem 3rem; grid-template-columns: 1fr; gap: 3rem; }
-      .hero-visual { display: none; }
-      .section, .screenshots-section, .download-cta { padding: 4rem 1.5rem; }
-      .download-box { padding: 2rem 1.5rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
     }
   </style>
 </head>
+
 <body>
 
-<nav>
-  <a href="../index.html" class="back-link">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Kembali ke Portfolio
+<!-- NAV -->
+<nav class="px-6 py-4 flex justify-between items-center glass sticky top-0">
+  <h1 class="font-semibold">Antrian System</h1>
+
+  <a href="/" class="text-sm hover:text-indigo-400">
+    ← Back to Portfolio
   </a>
-  <span class="nav-name">Sevira Azalia Putri</span>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div>
-    <div class="hero-label">📱 Android App + Web Dashboard</div>
-    <h1>Mobile Antrian<br><em>Online System</em></h1>
-    <p class="hero-desc">
-      Sistem antrian digital real-time yang memungkinkan pengguna mengambil nomor antrian dari smartphone mereka, sambil admin memantau dan mengelola seluruh proses melalui dashboard web yang terintegrasi.
-    </p>
-    <div class="cta-row">
-      <a href="../SistemAntrianOnline.apk" class="btn-primary" download>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Download APK
-      </a>
-    </div>
-    <div class="version-badge">
-      <span class="badge">v1.0</span>
-      <span class="badge">Android 6.0+</span>
-      <span class="badge">Free</span>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <div class="phone-icon">📋</div>
-        <div class="phone-text">Antrian Online</div>
-        <div class="phone-sub">Ambil nomor antrian dari mana saja</div>
-      </div>
-    </div>
-    <div class="browser-frame">
-      <div class="browser-bar">
-        <div class="browser-dot" style="background:#e24b4a;"></div>
-        <div class="browser-dot" style="background:#ef9f27;"></div>
-        <div class="browser-dot" style="background:#63992f;"></div>
-        <div class="browser-url">Admin Dashboard</div>
-      </div>
-      <div class="browser-body">
-        <div class="b-row accent"></div>
-        <div class="b-row" style="width:80%;"></div>
-        <div class="b-row" style="width:60%;"></div>
-        <div class="b-row" style="width:90%;margin-top:0.5rem;"></div>
-        <div class="b-row" style="width:70%;"></div>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="text-center py-24 px-6">
 
-<div class="divider"></div>
+  <h1 class="text-4xl md:text-5xl font-bold">
+    Mobile Antrian Online System
+  </h1>
 
-<!-- FEATURES -->
-<section class="section">
-  <p class="section-label">Fitur Utama</p>
-  <h2 class="section-title">Apa yang bisa dilakukan aplikasi ini?</h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">📱</div>
-      <div class="feature-title">Mobile App (Android)</div>
-      <ul class="feature-list">
-        <li>Login &amp; Register akun</li>
-        <li>Ambil nomor antrian</li>
-        <li>Monitor status antrian real-time</li>
-        <li>Notifikasi giliran</li>
-      </ul>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💻</div>
-      <div class="feature-title">Web Admin Dashboard</div>
-      <ul class="feature-list">
-        <li>Dashboard monitoring antrian</li>
-        <li>Kelola antrian aktif</li>
-        <li>Manajemen pengguna</li>
-        <li>Laporan &amp; statistik</li>
-      </ul>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <div class="feature-title">Real-Time &amp; Terintegrasi</div>
-      <ul class="feature-list">
-        <li>Data sinkron antar platform</li>
-        <li>REST API sebagai jembatan</li>
-        <li>Respons cepat &amp; ringan</li>
-        <li>Database terstruktur</li>
-      </ul>
-    </div>
-  </div>
+  <p class="mt-4 max-w-xl mx-auto opacity-70">
+    Sistem antrian digital berbasis Android dan Web Admin Dashboard
+    untuk meningkatkan efisiensi pelayanan.
+  </p>
+
+  <a href="/app-release.apk"
+     class="mt-8 inline-block px-6 py-3 bg-indigo-500 rounded-xl hover:bg-indigo-600">
+     Download APK
+  </a>
+
 </section>
 
-<div class="divider"></div>
+<!-- DESKRIPSI -->
+<section class="max-w-4xl mx-auto px-6 py-16">
+
+  <div class="glass p-8">
+
+    <h2 class="text-2xl font-bold mb-4">Tentang Aplikasi</h2>
+
+    <p class="opacity-80">
+      Aplikasi ini memungkinkan pengguna mengambil nomor antrian secara online melalui mobile app,
+      dan memantau status antrian secara real-time.
+    </p>
+
+    <p class="opacity-80 mt-4">
+      Admin dapat mengelola seluruh proses melalui dashboard web yang terintegrasi dengan backend API.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FITUR -->
+<section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-6">
+
+  <div class="glass p-6">
+    <h3 class="font-semibold mb-3">📱 Mobile App</h3>
+    <ul class="space-y-2 opacity-80 text-sm">
+      <li>Login / Register</li>
+      <li>Ambil Antrian</li>
+      <li>Monitor Status</li>
+      <li>Notifikasi</li>
+    </ul>
+  </div>
+
+  <div class="glass p-6">
+    <h3 class="font-semibold mb-3">💻 Web Admin</h3>
+    <ul class="space-y-2 opacity-80 text-sm">
+      <li>Dashboard</li>
+      <li>Kelola Antrian</li>
+      <li>Kelola User</li>
+      <li>Laporan</li>
+    </ul>
+  </div>
+
+</section>
 
 <!-- SCREENSHOTS -->
-<section class="screenshots-section">
-  <p class="section-label">Screenshots</p>
-  <h2 class="section-title">Tampilan aplikasi</h2>
-  <p class="screenshots-desc">Berikut adalah tampilan antarmuka dari mobile app dan web admin dashboard.</p>
+<section class="max-w-6xl mx-auto px-6 py-20">
 
-  <div class="screenshot-group">
-    <div class="screenshot-group-label">Mobile App</div>
-    <div class="screenshot-grid">
-      <div class="screenshot-item">
-        <img src="../antrian-project/screenshots/mobile-login.png" alt="Mobile Login" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--muted);font-size:0.8rem;\'>Login</span>';" />
-      </div>
-      <div class="screenshot-item">
-        <img src="../antrian-project/screenshots/mobile-dashboard.png" alt="Mobile Dashboard" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--muted);font-size:0.8rem;\'>Dashboard</span>';" />
-      </div>
-      <div class="screenshot-item">
-        <img src="../antrian-project/screenshots/mobile-monitor.png" alt="Mobile Monitor" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--muted);font-size:0.8rem;\'>Monitor</span>';" />
-      </div>
-    </div>
+  <h2 class="text-2xl font-bold text-center mb-10">
+    Screenshots
+  </h2>
+
+  <!-- MOBILE -->
+  <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+    <img src="screenshots/mobile-login.png" class="rounded-xl aspect-[9/19] object-cover">
+    <img src="screenshots/mobile-dashboard.png" class="rounded-xl aspect-[9/19] object-cover">
+    <img src="screenshots/mobile-monitor.png" class="rounded-xl aspect-[9/19] object-cover">
+
   </div>
 
-  <div class="screenshot-group">
-    <div class="screenshot-group-label">Web Admin Dashboard</div>
-    <div class="screenshot-grid">
-      <div class="screenshot-item web">
-        <img src="../antrian-project/screenshots/admin-dashboard.png" alt="Admin Dashboard" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--muted);font-size:0.8rem;\'>Admin Dashboard</span>';" />
-      </div>
-      <div class="screenshot-item web">
-        <img src="../antrian-project/screenshots/admin-monitor.png" alt="Admin Monitor" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--muted);font-size:0.8rem;\'>Admin Monitor</span>';" />
-      </div>
-      <div class="screenshot-item web">
-        <img src="../antrian-project/screenshots/admin-user.png" alt="Admin User" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--muted);font-size:0.8rem;\'>Admin Users</span>';" />
-      </div>
-    </div>
+  <!-- ADMIN -->
+  <div class="grid md:grid-cols-3 gap-6">
+
+    <img src="screenshots/admin-dashboard.png" class="rounded-xl max-h-72 object-contain">
+    <img src="screenshots/admin-monitor.png" class="rounded-xl max-h-72 object-contain">
+    <img src="screenshots/admin-user.png" class="rounded-xl max-h-72 object-contain">
+
   </div>
+
 </section>
-
-<div class="divider"></div>
 
 <!-- TECH STACK -->
-<section class="section">
-  <p class="section-label">Tech Stack</p>
-  <h2 class="section-title">Teknologi yang digunakan</h2>
-  <div class="tech-grid">
-    <span class="tech-pill highlight">Kotlin</span>
-    <span class="tech-pill highlight">Android Studio</span>
-    <span class="tech-pill highlight">React</span>
-    <span class="tech-pill highlight">REST API</span>
-    <span class="tech-pill">Tailwind CSS</span>
-    <span class="tech-pill">MySQL</span>
-    <span class="tech-pill">Node.js</span>
+<section class="text-center py-16">
+
+  <h2 class="text-2xl font-bold mb-6">Tech Stack</h2>
+
+  <div class="flex flex-wrap justify-center gap-3 opacity-80 text-sm">
+    <span class="glass px-3 py-1">Kotlin</span>
+    <span class="glass px-3 py-1">React</span>
+    <span class="glass px-3 py-1">Tailwind</span>
+    <span class="glass px-3 py-1">REST API</span>
+    <span class="glass px-3 py-1">MySQL</span>
   </div>
+
 </section>
 
-<div class="divider"></div>
-
-<!-- DOWNLOAD CTA -->
-<section class="download-cta">
-  <div class="download-box">
-    <div class="download-info">
-      <h2>Coba Aplikasinya</h2>
-      <p>Download APK langsung dan coba sistem antrian digital ini di perangkat Android kamu.</p>
-      <div class="download-meta">
-        <span class="meta-item">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Versi 1.0
-        </span>
-        <span class="meta-item">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Android 6.0+
-        </span>
-        <span class="meta-item">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Gratis
-        </span>
-      </div>
-    </div>
-    <a href="../SistemAntrianOnline.apk" class="btn-primary" download>
-      <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l-3-3m3 3l3-3M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Download APK
-    </a>
-  </div>
-</section>
-
-<footer>
-  <span>© 2026 Sevira Azalia Putri</span>
-  <a href="../index.html" style="color: var(--muted); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#c8f064'" onmouseout="this.style.color='var(--muted)'">← Kembali ke Portfolio</a>
+<!-- FOOTER -->
+<footer class="text-center py-6 text-sm opacity-50">
+  © 2026 Mobile Antrian System
 </footer>
 
 </body>
